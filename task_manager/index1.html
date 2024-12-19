@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Task Manager</title>
+    <link rel="stylesheet" href="styles1.css">
+    <meta name="description" content="Advanced Task Management Application with Modern Web Technologies">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Task Manager</h1>
+            <nav>
+                <button id="theme-toggle">Toggle Theme</button>
+                <button id="add-task-btn">+ New Task</button>
+            </nav>
+        </header>
+
+        <main>
+            <section id="task-filters">
+                <select id="status-filter">
+                    <option value="all">All Tasks</option>
+                    <option value="pending">Pending</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+                <input type="text" id="search-tasks" placeholder="Search Tasks">
+            </section>
+
+            <section id="task-list">
+                <!-- Tasks will be dynamically rendered here -->
+            </section>
+
+            <div id="task-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Create New Task</h2>
+                    <form id="task-form">
+                        <input type="text" id="task-title" required placeholder="Task Title">
+                        <textarea id="task-description" placeholder="Task Description"></textarea>
+                        <select id="task-priority">
+                            <option value="low">Low Priority</option>
+                            <option value="medium">Medium Priority</option>
+                            <option value="high">High Priority</option>
+                        </select>
+                        <input type="date" id="task-due-date">
+                        <button type="submit">Create Task</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Advanced Task Manager</p>
+        </footer>
+    </div>
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Create New Task</h2>
+            <form id="task-form">
+                <input type="text" id="task-title" required placeholder="Task Title">
+                <textarea id="task-description" placeholder="Task Description"></textarea>
+                <select id="task-priority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <input type="date" id="task-due-date">
+                <button type="submit" id="task-submit-btn">Create Task</button>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="app1.js"></script>
+</body>
+</html>

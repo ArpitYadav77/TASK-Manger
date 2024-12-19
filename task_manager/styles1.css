@@ -1,0 +1,220 @@
+:root {
+    /* Expanded Color Palette */
+    --color-primary: #6A5ACD;      /* Slate Blue */
+    --color-secondary: #20B2AA;    /* Light Sea Green */
+    --color-accent: #FF6B6B;       /* Pastel Red */
+    --color-background-light: #F4F7F6;
+    --color-background-dark: #1A1A2E;
+    
+    /* Gradient Backgrounds */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary), #8A4FFF);
+    --gradient-secondary: linear-gradient(135deg, var(--color-secondary), #00CED1);
+    
+    /* Typography */
+    --font-primary: 'Manrope', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+    
+    /* Shadows and Elevations */
+    --shadow-subtle: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-medium: 0 10px 20px rgba(0,0,0,0.15);
+    --shadow-elevated: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Global Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    background-color: var(--color-background-light);
+    color: #333;
+}
+
+/* Dark Mode Enhancements */
+body.dark-mode {
+    background-color: var(--color-background-dark);
+    color: #e0e0e0;
+}
+
+/* Layout Container */
+#app {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    box-shadow: var(--shadow-subtle);
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+/* Navigation Buttons */
+#theme-toggle, #add-task-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+}
+
+#theme-toggle:hover, #add-task-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    background: rgba(255,255,255,0.3);
+}
+
+/* Task List Grid */
+#task-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+/* Task Card Styling */
+.task-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-subtle);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+/* Interactive Task Card Hover Effects */
+.task-card:hover {
+    transform: scale(1.05) rotateX(10deg);
+    box-shadow: var(--shadow-elevated);
+}
+
+/* Priority Color Coding */
+.task-card .priority {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.priority[data-priority="low"] { 
+    background-color: var(--color-secondary); 
+    color: white;
+}
+
+.priority[data-priority="medium"] { 
+    background-color: var(--color-accent); 
+    color: white;
+}
+
+.priority[data-priority="high"] { 
+    background-color: #FF4500; 
+    color: white;
+}
+
+/* Responsive Typography */
+@media screen and (max-width: 768px) {
+    #task-list {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.task-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Modal Styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--shadow-elevated);
+}
+
+/* Interactive Form Inputs */
+#task-form input, 
+#task-form textarea, 
+#task-form select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#task-form input:focus, 
+#task-form textarea:focus, 
+#task-form select:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.2);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-background-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+}
